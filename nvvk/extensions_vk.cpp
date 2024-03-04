@@ -950,7 +950,7 @@ VKAPI_ATTR VkDeviceAddress VKAPI_CALL vkGetBufferDeviceAddressEXT(
 VKAPI_ATTR VkResult VKAPI_CALL vkGetCalibratedTimestampsEXT(
 	VkDevice device, 
 	uint32_t timestampCount, 
-	const VkCalibratedTimestampInfoKHR* pTimestampInfos, 
+	const VkCalibratedTimestampInfoEXT* pTimestampInfos, 
 	uint64_t* pTimestamps, 
 	uint64_t* pMaxDeviation) 
 { 
@@ -959,7 +959,7 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetCalibratedTimestampsEXT(
 VKAPI_ATTR VkResult VKAPI_CALL vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
 	VkPhysicalDevice physicalDevice, 
 	uint32_t* pTimeDomainCount, 
-	VkTimeDomainKHR* pTimeDomains) 
+	VkTimeDomainEXT* pTimeDomains) 
 { 
   return pfn_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(physicalDevice, pTimeDomainCount, pTimeDomains); 
 }
@@ -3479,9 +3479,10 @@ VKAPI_ATTR void VKAPI_CALL vkCmdSetFragmentShadingRateEnumNV(
 VKAPI_ATTR void VKAPI_CALL vkGetLatencyTimingsNV(
 	VkDevice device, 
 	VkSwapchainKHR swapchain, 
+  uint32_t* pTimingCount,
 	VkGetLatencyMarkerInfoNV* pLatencyMarkerInfo) 
 { 
-  pfn_vkGetLatencyTimingsNV(device, swapchain, pLatencyMarkerInfo); 
+  pfn_vkGetLatencyTimingsNV(device, swapchain, pTimingCount, pLatencyMarkerInfo); 
 }
 VKAPI_ATTR VkResult VKAPI_CALL vkLatencySleepNV(
 	VkDevice device, 
